@@ -3,6 +3,7 @@ import './App.css';
 import store from './store/index';
 import update_person from './actions/personActions';
 import update_animal from './actions/animalActions';
+import {connect} from 'react-redux';
 
 function updatePerson() {
   store.dispatch(update_person);
@@ -30,4 +31,8 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return state;
+}
+
+export default connect(mapStateToProps)(App);
