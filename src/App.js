@@ -1,20 +1,10 @@
 import React from 'react';
 import './App.css';
-import store from './store/index';
 import update_person from './actions/personActions';
 import update_animal from './actions/animalActions';
 import {connect} from 'react-redux';
 
-function updatePerson() {
-  store.dispatch(update_person);
-}
-
-function updateAnimal() {
-  store.dispatch(update_animal);
-}
-
 function App(props) {
-  console.log(props)
   return (
     <div className="App">
       <div className="container">
@@ -22,18 +12,28 @@ function App(props) {
         <hr/>
         Person: {props.person.name}
         <br/>
-        <button className="btn btn-primary btn-sm" onClick={updatePerson}>update person</button>
+        <button className="btn btn-primary btn-sm" onClick={props.updatePerson}>update person</button>
         <br/><br/>
         Animal: {props.animal.name}
         <br/>
-        <button className="btn btn-primary btn-sm" onClick={updateAnimal}>update animal</button>
+        <button className="btn btn-primary btn-sm" onClick={props.updateAnimal}>update animal</button>
       </div>
     </div>
   );
 }
 
 const mapStateToProps = state => {
-  return state;
+  return {
+    person: state.person,
+    animal: state.animal
+  };
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => {
+  return {
+    updatePerson: () => {dispatch(update_person)},
+    updateAnimal: () => {dispatch(update_animal)}
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);
