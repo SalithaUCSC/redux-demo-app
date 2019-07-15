@@ -1,10 +1,12 @@
+import {UPDATE_ANIMAL} from '../actions/animalActions';
+
 const animalReducer = (state = {}, {type,payload}) => {
-    if(type === "UPDATE_ANIMAL") {
-        return {
-            name: payload
-        }
+    switch (type) {
+        case UPDATE_ANIMAL:
+            return {name: payload}
+        default:
+            return state;
     }
-    return state;
 };
 
 export default animalReducer;

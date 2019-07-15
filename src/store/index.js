@@ -6,8 +6,10 @@ const AllReducers = combineReducers({animal: animalReducer, person: personReduce
 
 const InitialState = {
     animal: { name: "dog" },
-    person: { name: "techpool" }
+    person: { name: "salitha" }
 }
-const store = createStore(AllReducers, InitialState);
+const store = createStore(AllReducers, InitialState,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 export default store;

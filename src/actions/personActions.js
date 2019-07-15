@@ -1,3 +1,5 @@
-store.dispatch({type: "UPDATE_PERSON", payload: "pool"});
+export const UPDATE_PERSON = 'UPDATE_PERSON';
 
-export default personActions;
+const update_person = {type: UPDATE_PERSON, payload: "pool"};
+
+export default update_person; 

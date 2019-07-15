@@ -1,10 +1,12 @@
+import {UPDATE_PERSON} from '../actions/personActions';
+
 const personReducer = (state = {}, {type,payload}) => {
-    if(type === "UPDATE_PERSON") {
-        return {
-            name: payload
-        }
+    switch (type) {
+        case UPDATE_PERSON:
+            return {name: payload}
+        default:
+            return state;
     }
-    return state;
 };
 
 export default personReducer;
